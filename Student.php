@@ -1,18 +1,23 @@
 <?php
-	class Student extends User
+	class Student
 	{
-		private $course;
+		private $name;
+		private $scholarship;
 		
-		public function __construct($name, $age, $course)
+		public function __construct($name, $scholarship)
 		{
 			$this->name = $name;
-			$this->age = $age;
-			$this->course = $course;
+			$this->scholarship = $scholarship;
 		}
 		
-		public function getCourse()
+		public function getName()
 		{
-			return $this->course;
+			return $this->name;
+		}
+		
+		public function getScholarship()
+		{
+			return $this->scholarship;
 		}
 	}
 ?>

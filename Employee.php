@@ -1,15 +1,23 @@
 <?php
-require_once 'User.php';
-
-class Employee extends User {
-	private $salary;
-
-	public function __construct($name, $surname, $birthday, $salary) {
-		parent::__construct($name, $surname, $birthday);
-		$this->salary = $salary;
+	class Employee
+	{
+		private $name;
+		private $salary;
+		
+		public function __construct($name, $salary)
+		{
+			$this->name = $name;
+			$this->salary = $salary;
+		}
+		
+		public function getName()
+		{
+			return $this->name;
+		}
+		
+		public function getSalary()
+		{
+			return $this->salary;
+		}
 	}
-
-	public function getSalary() {
-		return $this->salary;
-	}
-}
+?>
