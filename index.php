@@ -1,6 +1,6 @@
 <?php
 require_once 'Employee.php';
-require_once 'Student.php';
+// require_once 'Student.php';
 // require_once 'Programmer.php';
 // require_once 'Driver.php';
 // require_once 'Product.php';
@@ -11,51 +11,16 @@ require_once 'Student.php';
 // require_once 'EmployeesCollection.php';
 // require_once 'User.php';
 // require_once 'City.php';
+require_once 'Post.php';
 
-class UsersCollection {
-	private $stud = [];
-	private $emps = [];
+$prog = new Post('programmer', 10000);
+$manag = new Post('manager', 2000);
+$driver = new Post('driver', 700);
 
-	public function add($obj) {
-		if ($obj instanceof Student) {
-			$this->stud[] = $obj;
-		}
-
-		if ($obj instanceof Employee) {
-			$this->emps[] = $obj;
-		}
-	}
-
-	public function getTotalSalary() {
-		$res = 0;
-		foreach ($this->emps as $val) {
-			$res += $val->getSalary();
-		}
-		return $res;
-	}
-
-	public function getTotalScholarship() {
-		$res = 0;
-		foreach ($this->stud as $val) {
-			$res += $val->getScholarship();
-		}
-		return $res;
-	}
-
-	public function getTotalPayment() {
-		return $this->getTotalSalary() + $this->getTotalScholarship();
-	}
-}
-
-$users = new UsersCollection;
-
-$users->add(new Student('kyle', 100));
-$users->add(new Student('luis', 200));
-
-$users->add(new Employee('john', 300));
-$users->add(new Employee('eric', 400));
-
-echo $users->getTotalScholarship();
-echo $users->getTotalSalary();
-echo $users->getTotalPayment();
+$worker = new Employee('max', 'ybarra', $prog);
+echo $worker->getName();
+echo $worker->getSurname();
+echo $worker->post->getName();
+$worker->changePost($manag);
+echo $worker->post->getName();
 ?>
